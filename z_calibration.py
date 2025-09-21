@@ -42,6 +42,11 @@ class ZCalibrationHelper:
                                             None, above=0.)
         self.position_min = config.getfloat('position_min', None)
         self.first_fast = config.getboolean('probing_first_fast', False)
+        
+        prtypes = {'none': None, 'switch': 'switch', 'nontouching': 'nontouching'}                                       
+        self.probe_type = config.getchoice('probe_type', prtypes,
+                                                'none')
+        
         self.nozzle_site = self._get_xy("nozzle_xy_position", True)
         self.switch_site = self._get_xy("switch_xy_position", True)
         self.switch_xy_offsets = self._get_xy("switch_xy_offsets", True)
@@ -101,6 +106,8 @@ class ZCalibrationHelper:
                 self.lift_speed = probe.lift_speed
             if self.samples_result is None:
                 self.samples_result = probe.samples_result
+            if self.probe_type is None:
+                self.probe_type = switch   
             if self.safe_z_height is None:
                 self.safe_z_height = probe.z_offset * 2
         else:
@@ -115,6 +122,8 @@ class ZCalibrationHelper:
                 self.lift_speed = probe_params['lift_speed']
             if self.samples_result is None:
                 self.samples_result = probe_params['samples_result']
+            if self.probe_type is None:
+                self.probe_type = switch   
             if self.safe_z_height is None:
                 self.safe_z_height = probe.get_offsets()[2] * 2
         # TODO: remove: clearance is deprecated
@@ -371,12 +380,13 @@ class ZCalibrationHelper:
                     bed_site):
         logging.info("%s: switch_offset=%.3f, offset_margins=%.3f,%.3f,"
                      " speed=%.3f, samples=%i, tolerance=%.3f, retries=%i,"
-                     " samples_result=%s, lift_speed=%.3f, safe_z_height=%.3f,"
+                     " samples_result=%s, lift_speed=%.3, safe_z_height=%.3f,"
                      " probing_speed=%.3f, second_speed=%.3f,"
                      " retract_dist=%.3f, position_min=%.3f,"
                      " probe_nozzle_x=%.3f, probe_nozzle_y=%.3f,"
                      " probe_switch_x=%.3f, probe_switch_y=%.3f,"
                      " probe_bed_x=%.3f, probe_bed_y=%.3f"
+                     " probe_type=%i"
                      % (gcmd.get_command(), switch_offset,
                         self.offset_margins[0], self.offset_margins[1],
                         self.speed, self.samples, self.tolerance,
@@ -385,7 +395,8 @@ class ZCalibrationHelper:
                         self.second_speed, self.retract_dist,
                         self.position_min, nozzle_site[0], nozzle_site[1],
                         switch_site[0], switch_site[1], bed_site[0],
-                        bed_site[1]))
+                        bed_site[1],
+                        self.probe_type))
 class EndstopWrapper:
     def __init__(self, endstop):
         self.mcu_endstop = endstop
