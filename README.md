@@ -1,3 +1,12 @@
+This is a fork of the original,the original Readme is enclosed under here.
+Im forking, as my setup is different.
+I have my nozzle electrically connected to an input.
+Then i have a bolt placed on my printbed, connected to an output.
+5V on the output, to the input, works like a switch, this will be the endstop
+Then i need to home my capacitive probe to the sensor
+Therefore i added an extra option, probe: switch or NonTouching.
+This will only matter, when trying to probe the probe height, on the z endstop
+
 <p align="center">
   <img src="https://repository-images.githubusercontent.com/365369551/ef2987a7-0faf-4844-91c9-f221e4112b4d" alt='Z-Calibration Logo' width='50%'>
   <h1 align="center">Automatic Z-Calibration</h1>
