@@ -499,15 +499,22 @@ class CalibrationState:
             else:
                 self.probe.probe_session.start_probe_session(None)
             try:
-                # probe switch body
-                switch_zero = self._probe_on_site(self.z_endstop,
-                                                  switch_site,
-                                                  check_probe=True)
-                # probe bed position
-                probe_site = self._add_probe_offset(bed_site)
-                probe_zero = self._probe_on_site(self.probe.mcu_probe,
-                                                 probe_site,
-                                                 check_probe=True)
+                if self.helper.probe_type == 'switch':
+                    # probe switch body
+                    switch_zero = self._probe_on_site(self.z_endstop,
+                                                      switch_site,
+                                                      check_probe=True)
+                    # probe bed position
+                    probe_site = self._add_probe_offset(bed_site)
+                    probe_zero = self._probe_on_site(self.probe.mcu_probe,
+                                                     probe_site,
+                                                     check_probe=True)
+                elif self.helper.probe_type == 'nontouching':
+                    #Probe using probe for sensing
+                    switch_zero = self._probe_on_site(self.probe.mcu_probe,
+                                                      switch_site,
+                                                      check_probe=True)
+                    logging.exception("Brf1")
             finally:
                 # end probe session
                 try:
