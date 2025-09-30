@@ -2,6 +2,12 @@ This is a fork of the original,the original Readme is enclosed under here.
 Im forking, as my setup is different.
 I have my nozzle electrically connected to an input.
 Then i have a bolt placed on my printbed, connected to an output.
+
+<p align="center">
+  <img src="https://github.com/browsem/klipper_z_calibration_Capacitive/blob/master/pictures/IMG_20250717_123315764.jpg" width='50%'>
+  <h1 align="center">Automatic Z-Calibration</h1>
+</p>
+
 5V on the output, to the input, works like a switch, this will be the endstop
 Then i need to home my capacitive probe to the sensor
 Therefore i added an extra option, probe: switch or NonTouching.
