@@ -6,7 +6,7 @@ Then i have a bolt placed on my printbed, connected to an output.
 </p>
 <p align="center">
   <img src="https://github.com/browsem/klipper_z_calibration_Capacitive/blob/master/pictures/IMG_20250717_123315764.jpg" width='50%'>
-    <align="center">Bolt mounted to the printbed</align>
+    <p align="center">Bolt mounted to the printbed</p>
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@ Then i need to home my capacitive probe to the sensor
 
 <p align="center">
   <img src="https://github.com/browsem/klipper_z_calibration_Capacitive/blob/master/pictures/IMG_20250717_123326884.jpg" width='50%'>
-  <align="center">Nozzle comming down</align>
+  <p align="center">Nozzle comming down</p>
 </p>
 
 <p align="center">
