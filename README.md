@@ -23,7 +23,7 @@ Then i need to home my capacitive probe to the sensor
 Therefore i added an extra option, probe: switch or NonTouching.
 This will only matter, when trying to probe the probe height, on the z endstop
 </p>
-
+ <h1 align="center">Anything below here is from the original </h1>
 
 <p align="center">
   <img src="https://repository-images.githubusercontent.com/365369551/ef2987a7-0faf-4844-91c9-f221e4112b4d" alt='Z-Calibration Logo' width='50%'>
